@@ -1,4 +1,8 @@
 import csv
+import random
+import zipfile
+import os
+import shutil
 
 from itertools import product
 
@@ -24,8 +28,22 @@ def classify_score(score):
     else:
         return "Ultra Conservative Investor"
 
-#Write to CSV File
-filename = "Questionaire.csv"
+#Zip all files in directory
+def zipdir(path, ziph):
+    # ziph is zipfile handle
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            ziph.write(os.path.join(root, file))
+
+#Check if directory already exists and delete
+if os.path.isdir('./Dataset') :
+    shutil.rmtree("./Dataset")
+
+#Creare a directory
+os.mkdir('./Dataset')
+
+#Create csv file
+filename = "./Dataset/Questionaire.csv"
 with open(filename, 'w') as csvfile:
    csvwriter = csv.writer(csvfile)
    csvwriter.writerow(header)
@@ -47,7 +65,17 @@ with open(filename, 'w') as csvfile:
        optionRow[40] = classify_score(score)
        rowOfOption.append(optionRow)
 
+   random.shuffle(rowOfOption)
    csvwriter.writerows(rowOfOption)
+
+#Make zip file
+zipf = zipfile.ZipFile('Dataset.zip', 'w', zipfile.ZIP_DEFLATED)
+zipdir('./Dataset', zipf)
+zipf.close()
+
+#Delete directory
+if os.path.isdir('./Dataset') :
+    shutil.rmtree("./Dataset")
 
 
 
