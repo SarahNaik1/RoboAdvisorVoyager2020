@@ -78,7 +78,6 @@ random_grid = {'n_estimators': n_estimators,
                'min_samples_split': min_samples_split,
                'min_samples_leaf': min_samples_leaf,
                'bootstrap': bootstrap}
-print(random_grid)
 
 # Use the random grid to search for best hyperparameters
 # First create the base model to tune
