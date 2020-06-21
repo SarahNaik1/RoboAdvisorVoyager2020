@@ -1,0 +1,7 @@
+csv
+itertools
+pandas
+numpy
+collections
+sklearn
+flask
