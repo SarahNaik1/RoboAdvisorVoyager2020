@@ -3,11 +3,8 @@ import numpy as np
 from collections import Counter
 from sklearn.metrics import confusion_matrix 
 from sklearn.model_selection import train_test_split 
-from sklearn.model_selection import cross_val_score
 from sklearn.svm import SVC 
 from sklearn.metrics import classification_report
-import matplotlib.pyplot as plt
-import seaborn as sn
 
 
 data = pd.read_csv('../dataset/Questionaire.csv')
