@@ -1,1 +1,2 @@
-#!/bin/bashsystemctl start robo-advisor
+#!/bin/bash
+systemctl start robo-advisor 
