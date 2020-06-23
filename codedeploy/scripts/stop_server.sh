@@ -1,1 +1,2 @@
-#!/bin/bashsystemctl stop robo-advisor
+#!/bin/bash
+systemctl stop robo-advisor 
